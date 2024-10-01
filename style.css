@@ -1,0 +1,168 @@
+:root {
+    --background: #252A34;
+    --primary-color: #1C1D20;
+    --secondary-color: #656667;
+    --accent-color: #08D9D6;
+    --text-color: #EAEAEA;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-family: "Fira Sans Condensed", sans-serif;
+    font-weight: 500;
+    /* font-size: 2rem; */
+    color: var(--text-color);
+}
+
+body {
+    min-height: 100vh;
+    padding: 10px;
+    background-color: var(--background);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h2 {
+    margin: 0 5%;
+    color: var(--accent-color);
+    font-size: 3vw;
+    font-weight: 700;
+    text-align: center;
+    
+}
+
+h3 {
+    margin: 10px;
+    text-align: center;
+}
+.wrapper {
+    width: 700px;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.inputbox {
+    box-sizing: border-box;
+    padding: 0 20px; 
+    width: 100%;
+    background: none;
+    border: 2px solid var(--secondary-color);
+    border-radius: 1000px;
+    /* color: var(--text-color); */
+    caret-color: var(--accent-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.inputText {
+    background: none;
+    border: none;
+    color: var(--text-color);
+}
+
+.inputText:focus{
+    outline: none;
+}
+
+#addbtn {
+    position: relative;
+    right: -3.5%;
+    box-sizing: border-box;
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    padding: 10px 30px;
+    border: none;
+    border-radius: 40px;
+    font-weight: 600;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+.todo {
+    margin-bottom: 10px;
+    background-color: var(--primary-color);
+    padding: 0 10px;
+    border-radius: 15px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+.todo-text {
+    padding-left: 15px;
+    flex-grow: 1;
+    transition: 300ms ease;
+}
+
+.dlt-btn {
+    margin-left: auto;
+    background-color: var(--primary-color);
+    border: none;
+    font-size: 1.3em;
+    padding: 10px;
+    cursor: pointer;
+    color: var(--secondary-color);
+}
+
+.dlt-btn:hover {
+    color: red;
+}
+
+.dlt-btn {
+    transition: 300ms ease;
+}
+
+.customcheckbox {
+    border: 2px solid var(--accent-color);
+    border-radius: 50%;
+     min-width: 20px;
+    min-height: 20px; 
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    color: transparent;
+    transition: 300ms ease;
+    cursor: pointer;
+    margin-left: auto;
+}
+
+input[type="checkbox"]:checked ~ .customcheckbox {
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    font-weight: 900;
+}
+
+input[type="checkbox"]:checked ~ .todo-text {
+    text-decoration: line-through;
+    color: var(--secondary-color);
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+
+@media (max-width: 600px) {
+    html {
+        font-size: 12pt;
+    }
+
+    #add-button {
+        position: unset;
+        width: 100%;
+        margin-top: 10px;
+        padding: 15px;
+        height: auto;
+    }
+
+    
+}
