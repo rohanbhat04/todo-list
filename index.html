@@ -3,32 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To-do List</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <title>To do list</title>
     <link
     href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
     rel="stylesheet"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <div class="wrapper">
-        <h2>TO - DO LIST</h2>
-        <form class="inputbox">
-            <input class="inputText" type="text" placeholder="Enter the task">
-            <button id="addbtn">ADD</button>
-        </form>
-        <div class="taskcontainer">
-            <h3>Tasks for the day</h3>
-            <ul id="todolist">
-               
-            </ul>
-        </div>
-        
-    </div>
-    
-    
-    <script src="script.js"></script>
+    <h1>TO DO LIST</h1>
+    <form>
+        <input type="text" class="todoinput" placeholder="enter the new task ">
+        <button class="addtask"> ADD</button>
+    </form>
+
+    <h3>Tasks for the day</h3>
+    <ul class="todolistul">
+        <!-- <li class="todoli"  id="todo-1">
+            <input type="checkbox" id="todo1">
+            <label for="todo1" class="customcheckbox">
+                <i class="ri-check-fill"></i>
+            </label>
+            <label for="todo1"  class="todotext" id="todo">
+                task1
+            </label>
+            <label ><button class="deletebutton">
+                <i class="ri-delete-bin-2-line"></i>
+            </button></label>
+        </li>
+
+        <li class="todoli" id="todo-2">
+            <input type="checkbox" id="todo2">
+            <label for="todo2" class="customcheckbox" >
+                <i class="ri-check-fill"></i>
+            </label>
+            <label for="todo2" class="todotext">
+                task2
+            </label>
+            <label ><button class="deletebutton">
+                <i class="ri-delete-bin-2-line"></i>
+            </button></label>
+        </li> -->
+    </ul>
 </body>
 </html>
