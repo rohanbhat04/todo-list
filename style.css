@@ -1,168 +1,115 @@
 :root {
-    --background: #252A34;
-    --primary-color: #1C1D20;
-    --secondary-color: #656667;
-    --accent-color: #08D9D6;
-    --text-color: #EAEAEA;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-}
-
-html {
-    font-family: "Fira Sans Condensed", sans-serif;
-    font-weight: 500;
-    /* font-size: 2rem; */
-    color: var(--text-color);
+    --primary-text:  #616161;
+    --background-color:  #fafafa;
+    --accent : #ffb6c1;
+    --highlight: #add8e6;
 }
 
 body {
-    min-height: 100vh;
-    padding: 10px;
-    background-color: var(--background);
+    font-family: "Lato", sans-serif;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    text-align: center;
+    background-color: var(--background-color);
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-h2 {
-    margin: 0 5%;
-    color: var(--accent-color);
-    font-size: 3vw;
-    font-weight: 700;
-    text-align: center;
-    
+h1 {
+    font-size: 3rem;
+    color: var(--primary-text);
 }
 
-h3 {
-    margin: 10px;
-    text-align: center;
-}
-.wrapper {
-    width: 700px;
-    max-width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.inputbox {
-    box-sizing: border-box;
-    padding: 0 20px; 
-    width: 100%;
-    background: none;
-    border: 2px solid var(--secondary-color);
-    border-radius: 1000px;
-    /* color: var(--text-color); */
-    caret-color: var(--accent-color);
+form {
+    width: 510px;
+    border: 2px solid var(--primary-text);
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    margin: 0 auto;
+    padding: px 0;
+    border-radius: 35px;
 }
 
-.inputText {
-    background: none;
+.todoinput {
+    padding: 10px 25px;
+    flex-grow: 1;
+    height: 100%;
     border: none;
-    color: var(--text-color);
+    border-radius: 35px;
+    background-color: var(--background-color);
+    caret-color: var(--accent);
+    /* i want to create the cursor to red or blue while entering the text */
 }
-
-.inputText:focus{
+.todoinput:focus{
     outline: none;
 }
 
-#addbtn {
-    position: relative;
-    right: -3.5%;
-    box-sizing: border-box;
-    background-color: var(--accent-color);
-    color: var(--primary-color);
-    padding: 10px 30px;
+.addtask {
+    background-color: var(--accent);
+    padding: 10px 15px;
+    border-radius: 35px;
     border: none;
-    border-radius: 40px;
-    font-weight: 600;
-    font-size: 1.2em;
-    cursor: pointer;
+    color: var(--primary-text);
+    font-weight: 700;
 }
 
-.todo {
-    margin-bottom: 10px;
-    background-color: var(--primary-color);
-    padding: 0 10px;
-    border-radius: 15px;
+
+
+h3 {
+    color: var(--primary-text);
+}
+
+.todoli {
     list-style: none;
+    border: 2px solid var(--primary-text);
+    width: 490px;
+    margin: 0px 0% 10px -4%;
     display: flex;
     align-items: center;
+    padding: 5px 10px;
+    border-radius: 15px;
+ 
+   
 }
 
-.todo-text {
-    padding-left: 15px;
+.todotext {
+    margin-right: 75%;
     flex-grow: 1;
-    transition: 300ms ease;
-}
-
-.dlt-btn {
-    margin-left: auto;
-    background-color: var(--primary-color);
-    border: none;
-    font-size: 1.3em;
-    padding: 10px;
     cursor: pointer;
-    color: var(--secondary-color);
 }
 
-.dlt-btn:hover {
-    color: red;
+.deletebutton  {
+    border: none;
+    background-color: var(--background-color);
+    font-size: 1.3rem;
+    padding: 0;
+    color: var(--accent);
+    cursor: pointer;
 }
 
-.dlt-btn {
+.deletebutton:hover {
+    color: rgb(251, 96, 96);
     transition: 300ms ease;
 }
 
 .customcheckbox {
-    border: 2px solid var(--accent-color);
-    border-radius: 50%;
-     min-width: 20px;
-    min-height: 20px; 
-    font-size: 1.2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-shrink: 0;
-    color: transparent;
-    transition: 300ms ease;
-    cursor: pointer;
-    margin-left: auto;
-}
-
-input[type="checkbox"]:checked ~ .customcheckbox {
-    background-color: var(--accent-color);
-    color: var(--primary-color);
-    font-weight: 900;
-}
-
-input[type="checkbox"]:checked ~ .todo-text {
-    text-decoration: line-through;
-    color: var(--secondary-color);
+    visibility: hidden;
 }
 
 input[type="checkbox"] {
     display: none;
 }
-
-@media (max-width: 600px) {
-    html {
-        font-size: 12pt;
-    }
-
-    #add-button {
-        position: unset;
-        width: 100%;
-        margin-top: 10px;
-        padding: 15px;
-        height: auto;
-    }
-
-    
+input[type="checkbox"]:checked ~ .todotext {
+    text-decoration: line-through;
+    color: var(--primary-text);
 }
+
+input[type="checkbox"]:checked ~ .customcheckbox {
+    visibility: initial; 
+    color: var(--accent);   
+}
+
+
+/* need to make it responsive for width less than 550px */
