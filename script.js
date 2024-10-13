@@ -1,87 +1,50 @@
-const todoForm = document.querySelector("form");
-const todoListUL = document.getElementById('todolist');
-const todoInput = document.querySelector('.inputText');
+let todoinput = document.querySelector(".todoinput");
+let addbutton = document.querySelector(".addtask");
+let deletebutton = document.querySelector(".deletebutton");
 
-let allTodos = [getTodos()];
-updateTodolist();
+let todoul = document.querySelector(".todolistul");
+let inputform = document.querySelector("form");
 
-todoForm.addEventListener("submit", function(e){
-    e.preventDefault();
-    addTodo();
+const todoLists = JSON.parse(localStorage.getItem("todoList")) || [];
 
-})
+todoLists.forEach((todo) => {
+  addTodoDOM(todo);
+});
 
-function addTodo(){
-    let todoText = todoInput.value.trim();
-    if(todoText.length > 0){
-        const todoObject = {
-            text: todoText,
-            completed: false
-        }
-        allTodos.push(todoObject);
-        updateTodolist(); 
-        saveTodo();
-        todoInput.value = "";
-
-    }
+function addTodoDOM(todoText) {
+  let todoli = document.createElement("li");
+  todoli.className = "todoli";
+  todoli.innerHTML = `<input type="checkbox" id="todo1">
+            <label for="todo1" class="customcheckbox">
+                <i class="ri-check-fill"></i>
+            </label>
+            <label for="todo1"  class="todotext" id="todo">
+                ${todoText}
+            </label>
+            <label ><button class="deletebutton">
+                <i class="ri-delete-bin-2-line"></i>
+            </button></label>`;
+  todoul.appendChild(todoli);
 }
 
-function updateTodolist(){
-    todoListUL.innerHTML = "";
-    allTodos.forEach((todo, todoIndex)=>{
-        todoItem = createTodoItem(todo, todoIndex);
-        todoListUL.append(todoItem);
-    })
-}
+inputform.addEventListener("submit", (e) => {
+  e.preventDefault();
+  let todotext = todoinput.value;
+  addTodoDOM(todotext);
+  todoinput.value = "";
+  todoLists.push(todotext);
 
-function createTodoItem(todo, todoIndex){
-    const todoId = "todo-"+todoIndex;
-    let todoLI = document.createElement("li");
-    const todoText = todo.text;
-    todoInput.value = "";
-    todoLI.className = "todo";
-    todoLI.innerHTML = `
-     
-                    <input type="checkbox" id="${todoId}" >
-                    <label for="${todoId}" class="customcheckbox">
-                        <i class="ri-check-fill"></i>
-                    </label>
-                    <label for="${todoId}" class="todo-text">
-                        ${todoText}
-                    </label>
-                    <button class="dlt-btn">
-                        <i class="ri-delete-bin-line"></i>
-                    </button>
-                
-    `
+  localStorage.setItem("todoList", JSON.stringify(todoLists));
+});
 
-    const deleteButton = todoLI.querySelector(".dlt-btn");
-    deleteButton.addEventListener("click", ()=>{
-        deleteTodoItem(todoIndex);
-    })
-    const checkbox = todoLI.querySelector("input");
-    checkbox.addEventListener("change", ()=>{
-        allTodos[todoIndex].completed = checkbox.checked;
-        saveTodos();
-    })
-    checkbox.checked = todo.completed;
-    return todoLI;
-}
+todoul.addEventListener("click", (e) => {
+  const btn = e.target.closest("button");
+  if (!btn) return;
 
-function deleteTodoItem(todoIndex){
-    allTodos = allTodos.filter((_, i)=> i !==todoIndex);
-    saveTodos();
-    updateTodolist();
-}
+  const li = btn.closest("li");
+  const indexOfLi = [...todoul.children].indexOf(li);
+  li.remove();
+  todoLists.splice(indexOfLi, 1);
 
-
-function saveTodos() {
-    const todosJson = JSON.stringify(allTodos)
-    localStorage.setItem("todos", todosJson);
-
-}
-
-function getTodos(){
-    const todos = localStorage.getItem("todos") || "[]";
-    return JSON.parse(todos);
-}
+  localStorage.setItem("todoList", JSON.stringify(todoLists));
+});
